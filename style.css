@@ -10,6 +10,7 @@ body {
   color: #333;
 }
 
+/* --- HEADER & NAVBAR --- */
 header {
   display: flex;
   justify-content: space-between;
@@ -17,6 +18,7 @@ header {
   padding: 15px 50px;
   background: #0056d2;
   color: white;
+  position: relative;
 }
 
 header .logo {
@@ -36,11 +38,20 @@ nav ul li a {
   font-weight: 500;
 }
 
+/* Tombol hamburger (hidden on desktop) */
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+/* --- HERO SECTION --- */
 .hero {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 50px;
+  flex-wrap: wrap;
 }
 
 .hero-text {
@@ -72,6 +83,7 @@ nav ul li a {
   border-radius: 12px;
 }
 
+/* --- MENU BELAJAR --- */
 .menu-belajar {
   padding: 50px;
   text-align: center;
@@ -103,10 +115,40 @@ nav ul li a {
   transform: translateY(-5px);
 }
 
+/* --- FOOTER --- */
 footer {
   background: #0056d2;
   color: white;
   text-align: center;
   padding: 15px;
   margin-top: 50px;
+}
+
+/* --- RESPONSIVE NAVBAR --- */
+@media (max-width: 768px) {
+  nav {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background: #0056d2;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.4s ease-in-out;
+  }
+
+  nav.show {
+    max-height: 200px; /* tinggi cukup untuk 4 menu */
+  }
+
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 0;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
 }
