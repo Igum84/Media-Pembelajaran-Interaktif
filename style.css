@@ -109,8 +109,55 @@ footer {
   background: #0056d2;
   color: white;
   text-align: center;
-  padding: 15px;
+  padding: 25px 15px; /* Tambah padding vertikal */
   margin-top: 50px;
+}
+
+.footer-content p {
+    margin-bottom: 10px; /* Jarak antar paragraf di footer */
+    line-height: 1.5; /* Spasi baris untuk alamat */
+    font-size: 14px;
+}
+
+.footer-content p:first-child {
+    margin-top: 0; /* Pastikan paragraf pertama tidak punya margin atas tambahan */
+}
+.footer-content p:last-of-type {
+    margin-bottom: 15px; /* Jarak antara alamat dan ikon */
+}
+
+
+.social-icons {
+    margin-top: 15px; /* Jarak antara teks dan ikon */
+}
+
+.social-icons a {
+    color: white; /* Warna ikon default */
+    font-size: 24px;
+    margin: 0 10px; /* Jarak antar ikon */
+    transition: color 0.3s ease; /* Transisi warna saat hover */
+    display: inline-block; /* Agar bisa diatur margin-top/bottom */
+}
+
+/* Hover effects */
+.social-icons a .fa-youtube:hover {
+    color: #FF0000; /* YouTube Red */
+}
+
+.social-icons a .fa-facebook-f:hover {
+    color: #3b5998; /* Facebook Blue */
+}
+
+.social-icons a .fa-instagram:hover {
+    color: #E1306C; /* Instagram Pink/Purple */
+}
+
+.social-icons a .fa-whatsapp:hover {
+    color: #25D366; /* WhatsApp Green */
+}
+
+.social-icons a .fa-envelope:hover {
+    color: #BB001B; /* Gmail/Email Red (contoh) */
 }
 
 /* ---------------------------------------------------------------- */
@@ -192,5 +239,13 @@ footer {
 
     .menu-grid {
         grid-template-columns: 1fr 1fr;
+    }
+    footer {
+        padding: 20px 10px; /* Sesuaikan padding footer untuk mobile */
+    }
+
+    .social-icons a {
+        font-size: 22px; /* Sesuaikan ukuran ikon di mobile */
+        margin: 0 8px;
     }
 }
