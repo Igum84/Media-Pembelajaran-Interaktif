@@ -1,223 +1,53 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Segoe UI", sans-serif;
-}
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Pembelajaran Interaktif</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">📚 RuangKelas Digital</div>
 
-body {
-  background: #f4f7fc;
-  color: #333;
-}
+        <div class="menu-toggle" role="button" aria-controls="nav-menu" aria-expanded="false" onclick="toggleMenu()">☰</div>
 
-/* --- HEADER & NAVBAR --- */
-header {
-  display: flex;
-  justify-content: space-between; /* Menjaga logo (kiri) dan menu (kanan) terpisah */
-  align-items: center;
-  padding: 15px 50px;
-  background: #0056d2;
-  color: white;
-  position: relative;
-}
+        <nav id="nav-menu">
+            <ul>
+                <li><a href="#">Beranda</a></li>
+                <li><a href="#">Materi</a></li>
+                <li><a href="#">Diskusi</a></li>
+                <li><a href="#">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
 
-header .logo {
-  font-size: 20px;
-  font-weight: bold;
-}
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Selamat Datang di RuangKelas Digital</h1>
+            <p>Belajar lebih interaktif, menyenangkan, dan fleksibel kapan saja.</p>
+            <button onclick="mulaiBelajar()">Mulai Belajar</button>
+        </div>
+        <div class="hero-image">
+            <img src="https://via.placeholder.com/400x300?text=Kelas+Digital" alt="Kelas Digital"> 
+        </div>
+    </section>
 
-/* DESKTOP STYLE */
-nav ul {
-  list-style: none;
-  display: flex; /* Menu horizontal di desktop */
-  gap: 20px;
-}
+    <section class="menu-belajar">
+        <h2>Pilih Aktivitas Belajar</h2>
+        <div class="menu-grid">
+            <div class="card" onclick="alert('Buka Materi')">📖 Materi</div>
+            <div class="card" onclick="alert('Buka Tugas')">📝 Tugas</div>
+            <div class="card" onclick="alert('Buka Diskusi')">💬 Diskusi</div>
+            <div class="card" onclick="alert('Buka Nilai')">📊 Nilai</div>
+            <div class="card" onclick="alert('Buka Perpustakaan')">🏛️ Perpustakaan</div>
+        </div>
+    </section>
 
-nav ul li a {
-  color: white;
-  text-decoration: none;
-  font-weight: 500;
-}
+    <footer>
+        <p>© 2025 RuangKelas Digital | Belajar Tanpa Batas</p>
+    </footer>
 
-/* Tombol hamburger (hidden on desktop) */
-.menu-toggle {
-  display: none; 
-  font-size: 28px;
-  cursor: pointer;
-  z-index: 10; /* Pastikan tombol di atas menu saat dibuka */
-}
-
-/* --- HERO SECTION --- */
-.hero {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 50px;
-  flex-wrap: wrap;
-}
-
-.hero-text {
-  max-width: 50%;
-}
-
-.hero-text h1 {
-  font-size: 36px;
-  margin-bottom: 15px;
-}
-
-.hero-text p {
-  margin-bottom: 20px;
-  font-size: 18px;
-  color: #555;
-}
-
-.hero-text button {
-  padding: 10px 20px;
-  background: #0056d2;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.hero-text button:hover {
-    background: #0044a8;
-}
-
-.hero-image img {
-  max-width: 400px;
-  border-radius: 12px;
-}
-
-/* --- MENU BELAJAR --- */
-.menu-belajar {
-  padding: 50px;
-  text-align: center;
-}
-
-.menu-belajar h2 {
-  margin-bottom: 30px;
-}
-
-.menu-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 20px;
-}
-
-.card {
-  background: white;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  cursor: pointer;
-  font-size: 18px;
-  transition: 0.3s;
-}
-
-.card:hover {
-  background: #0056d2;
-  color: white;
-  transform: translateY(-5px);
-}
-
-/* --- FOOTER --- */
-footer {
-  background: #0056d2;
-  color: white;
-  text-align: center;
-  padding: 15px;
-  margin-top: 50px;
-}
-
-/* ---------------------------------------------------------------- */
-/* --- RESPONSIVE MOBILE (Max-Width 768px) --- */
-/* ---------------------------------------------------------------- */
-@media (max-width: 768px) {
-    /* 1. Navbar dan Hamburger */
-    header {
-        padding: 15px 20px; /* Kurangi padding di mobile */
-    }
-
-    /* Tampilkan tombol hamburger */
-    .menu-toggle {
-        display: block; 
-    }
-
-    /* Sembunyikan navigasi default dan persiapkan untuk slide dari kanan */
-    nav {
-        position: absolute;
-        top: 60px; 
-        right: 0; /* Menu muncul dari sisi kanan */
-        left: auto;
-        width: 100%;
-        max-width: 250px; /* Batasi lebar menu panel agar rapi */
-        background: #0056d2;
-        overflow: hidden;
-        
-        max-height: 0; /* Sembunyikan secara default */
-        transition: max-height 0.4s ease-in-out;
-        z-index: 5;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    }
-
-    /* Tampilkan menu saat kelas 'show' ditambahkan */
-    nav.show {
-        max-height: 300px;
-    }
-
-    nav ul {
-        flex-direction: column; /* Menu vertikal */
-        align-items: flex-start; /* Rata kiri */
-        padding: 10px 15px;
-        gap: 0;
-    }
-    
-    nav ul li {
-        width: 100%;
-        padding: 10px 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    nav ul li:last-child {
-        border-bottom: none;
-    }
-
-
-    /* 2. Hero Section di Mobile */
-    .hero {
-        flex-direction: column; /* Ubah tata letak menjadi tumpukan */
-        text-align: center;
-        padding: 30px 20px;
-    }
-
-    .hero-text {
-        max-width: 100%;
-        margin-bottom: 20px;
-    }
-
-    .hero-text h1 {
-        font-size: 28px;
-    }
-
-    .hero-image img {
-        max-width: 100%;
-        height: auto;
-    }
-
-    /* 3. Menu Belajar di Mobile */
-    .menu-belajar {
-        padding: 30px 20px;
-    }
-
-    .menu-grid {
-        grid-template-columns: 1fr 1fr; /* Dua kolom di mobile */
-    }
-}
-
-/* Responsif untuk layar sangat kecil */
-@media (max-width: 480px) {
-    .menu-grid {
-        grid-template-columns: 1fr; /* Satu kolom di layar yang sangat sempit */
-    }
-}
+    <script src="script.js"></script>
+</body>
+</html>
