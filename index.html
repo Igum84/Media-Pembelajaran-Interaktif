@@ -7,12 +7,10 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Header -->
-<header>
+  <header>
   <div class="logo">📚 RuangKelas Digital</div>
 
-  <!-- Tombol hamburger -->
-  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+  <div class="menu-toggle" role="button" aria-controls="nav-menu" aria-expanded="false" onclick="toggleMenu()">☰</div>
 
   <nav id="nav-menu">
     <ul>
@@ -24,7 +22,6 @@
   </nav>
 </header>
 
-  <!-- Hero Section -->
   <section class="hero">
     <div class="hero-text">
       <h1>Selamat Datang di RuangKelas Digital</h1>
@@ -32,11 +29,10 @@
       <button onclick="mulaiBelajar()">Mulai Belajar</button>
     </div>
     <div class="hero-image">
-      <img src="gambar_elearning.png" alt="Kelas Digital">
+      <img src="https://via.placeholder.com/400x300?text=Kelas+Digital" alt="Kelas Digital"> 
     </div>
   </section>
 
-  <!-- Menu Belajar -->
   <section class="menu-belajar">
     <h2>Pilih Aktivitas Belajar</h2>
     <div class="menu-grid">
@@ -48,7 +44,6 @@
     </div>
   </section>
 
-  <!-- Footer -->
   <footer>
     <p>© 2025 RuangKelas Digital | Belajar Tanpa Batas</p>
   </footer>
