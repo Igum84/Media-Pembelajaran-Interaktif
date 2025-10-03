@@ -13,7 +13,7 @@ body {
 /* --- HEADER & NAVBAR (DESKTOP) --- */
 header {
   display: flex;
-  justify-content: space-between; /* Untuk memisahkan logo dan menu */
+  justify-content: space-between;
   align-items: center;
   padding: 15px 50px;
   background: #0056d2;
@@ -104,7 +104,7 @@ nav ul li a {
   transform: translateY(-5px);
 }
 
-/* --- FOOTER --- */
+/* --- FOOTER STYLES (Diperbarui) --- */
 footer {
   background: #0056d2;
   color: white;
@@ -114,21 +114,17 @@ footer {
 }
 
 .footer-content p {
-    margin-bottom: 10px; /* Jarak antar paragraf di footer */
-    line-height: 1.5; /* Spasi baris untuk alamat */
+    margin-bottom: 10px; 
+    line-height: 1.5;
     font-size: 14px;
 }
-
-.footer-content p:first-child {
-    margin-top: 0; /* Pastikan paragraf pertama tidak punya margin atas tambahan */
-}
 .footer-content p:last-of-type {
-    margin-bottom: 15px; /* Jarak antara alamat dan ikon */
+    margin-bottom: 15px; 
 }
 
 
 .social-icons {
-    margin-top: 15px; /* Jarak antara teks dan ikon */
+    margin-top: 15px;
 }
 
 .social-icons a {
@@ -136,10 +132,10 @@ footer {
     font-size: 24px;
     margin: 0 10px; /* Jarak antar ikon */
     transition: color 0.3s ease; /* Transisi warna saat hover */
-    display: inline-block; /* Agar bisa diatur margin-top/bottom */
+    display: inline-block;
 }
 
-/* Hover effects */
+/* Efek Hover (Warna Asli Logo) */
 .social-icons a .fa-youtube:hover {
     color: #FF0000; /* YouTube Red */
 }
@@ -157,7 +153,7 @@ footer {
 }
 
 .social-icons a .fa-envelope:hover {
-    color: #BB001B; /* Gmail/Email Red (contoh) */
+    color: #BB001B; /* Email Red */
 }
 
 /* ---------------------------------------------------------------- */
@@ -178,7 +174,6 @@ footer {
     
     /* Navigasi: Sembunyikan dan persiapkan SLIDE KE BAWAH */
     nav {
-        /* Hapus tampilan flex horizontal dari desktop */
         position: absolute;
         top: 60px; /* Di bawah header */
         right: 0;
@@ -240,12 +235,17 @@ footer {
     .menu-grid {
         grid-template-columns: 1fr 1fr;
     }
-    footer {
-        padding: 20px 10px; /* Sesuaikan padding footer untuk mobile */
-    }
-
+    
+    /* Footer Mobile */
     .social-icons a {
-        font-size: 22px; /* Sesuaikan ukuran ikon di mobile */
+        font-size: 22px; 
         margin: 0 8px;
+    }
+}
+
+/* Responsif untuk layar sangat kecil */
+@media (max-width: 480px) {
+    .menu-grid {
+        grid-template-columns: 1fr; /* Satu kolom di layar yang sangat sempit */
     }
 }
