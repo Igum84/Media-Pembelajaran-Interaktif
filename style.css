@@ -13,7 +13,7 @@ body {
 /* --- HEADER & NAVBAR --- */
 header {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Menjaga logo (kiri) dan menu (kanan) terpisah */
   align-items: center;
   padding: 15px 50px;
   background: #0056d2;
@@ -26,9 +26,10 @@ header .logo {
   font-weight: bold;
 }
 
+/* DESKTOP STYLE */
 nav ul {
   list-style: none;
-  display: flex;
+  display: flex; /* Menu horizontal di desktop */
   gap: 20px;
 }
 
@@ -40,9 +41,10 @@ nav ul li a {
 
 /* Tombol hamburger (hidden on desktop) */
 .menu-toggle {
-  display: none;
+  display: none; 
   font-size: 28px;
   cursor: pointer;
+  z-index: 10; /* Pastikan tombol di atas menu saat dibuka */
 }
 
 /* --- HERO SECTION --- */
@@ -76,6 +78,11 @@ nav ul li a {
   border: none;
   border-radius: 8px;
   cursor: pointer;
+  transition: background 0.3s;
+}
+
+.hero-text button:hover {
+    background: #0044a8;
 }
 
 .hero-image img {
@@ -124,31 +131,93 @@ footer {
   margin-top: 50px;
 }
 
-/* --- RESPONSIVE NAVBAR --- */
+/* ---------------------------------------------------------------- */
+/* --- RESPONSIVE MOBILE (Max-Width 768px) --- */
+/* ---------------------------------------------------------------- */
 @media (max-width: 768px) {
-  nav {
-    position: absolute;
-    top: 60px;
-    left: 0;
-    width: 100%;
-    background: #0056d2;
-    overflow: hidden;
-    max-height: 0;
-    transition: max-height 0.4s ease-in-out;
-  }
+    /* 1. Navbar dan Hamburger */
+    header {
+        padding: 15px 20px; /* Kurangi padding di mobile */
+    }
 
-  nav.show {
-    max-height: 200px; /* tinggi cukup untuk 4 menu */
-  }
+    /* Tampilkan tombol hamburger */
+    .menu-toggle {
+        display: block; 
+    }
 
-  nav ul {
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    padding: 15px 0;
-  }
+    /* Sembunyikan navigasi default dan persiapkan untuk slide dari kanan */
+    nav {
+        position: absolute;
+        top: 60px; 
+        right: 0; /* Menu muncul dari sisi kanan */
+        left: auto;
+        width: 100%;
+        max-width: 250px; /* Batasi lebar menu panel agar rapi */
+        background: #0056d2;
+        overflow: hidden;
+        
+        max-height: 0; /* Sembunyikan secara default */
+        transition: max-height 0.4s ease-in-out;
+        z-index: 5;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
 
-  .menu-toggle {
-    display: block;
-  }
+    /* Tampilkan menu saat kelas 'show' ditambahkan */
+    nav.show {
+        max-height: 300px;
+    }
+
+    nav ul {
+        flex-direction: column; /* Menu vertikal */
+        align-items: flex-start; /* Rata kiri */
+        padding: 10px 15px;
+        gap: 0;
+    }
+    
+    nav ul li {
+        width: 100%;
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    nav ul li:last-child {
+        border-bottom: none;
+    }
+
+
+    /* 2. Hero Section di Mobile */
+    .hero {
+        flex-direction: column; /* Ubah tata letak menjadi tumpukan */
+        text-align: center;
+        padding: 30px 20px;
+    }
+
+    .hero-text {
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .hero-text h1 {
+        font-size: 28px;
+    }
+
+    .hero-image img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* 3. Menu Belajar di Mobile */
+    .menu-belajar {
+        padding: 30px 20px;
+    }
+
+    .menu-grid {
+        grid-template-columns: 1fr 1fr; /* Dua kolom di mobile */
+    }
+}
+
+/* Responsif untuk layar sangat kecil */
+@media (max-width: 480px) {
+    .menu-grid {
+        grid-template-columns: 1fr; /* Satu kolom di layar yang sangat sempit */
+    }
 }
