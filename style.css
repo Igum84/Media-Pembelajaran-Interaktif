@@ -10,14 +10,14 @@ html {
     height: 100%;
 }
 body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; /* Memastikan body setidaknya setinggi viewport */
+    display: flex; /* AKTIFKAN FLEGBOX */
+    flex-direction: column; /* Susun vertikal: Header, Main, Footer */
+    min-height: 100vh; /* Pastikan body setidaknya setinggi viewport */
     background: #f4f7fc;
     color: #333;
 }
 main {
-    flex-grow: 1; /* Konten utama akan mengambil semua ruang sisa */
+    flex-grow: 1; /* Konten utama mengambil semua ruang vertikal yang tersisa */
 }
 /* ---------------------------------- */
 
@@ -118,6 +118,7 @@ nav ul li a {
 
 /* --- FOOTER STYLES --- */
 footer {
+  /* Tidak perlu margin-top: auto karena <main> sudah mengambil ruang sisa */
   background: #0056d2;
   color: white;
   text-align: center;
@@ -176,14 +177,12 @@ footer {
         padding: 15px 20px;
     }
 
-    /* Tampilkan tombol hamburger di POJOK KANAN */
     .menu-toggle {
         display: block; 
         font-size: 28px;
         z-index: 10; 
     }
     
-    /* Navigasi: Sembunyikan dan persiapkan SLIDE KE BAWAH */
     nav {
         position: absolute;
         top: 60px; 
@@ -193,12 +192,11 @@ footer {
         background: #0056d2;
         overflow: hidden;
         
-        max-height: 0; /* Menu TERSEMBUNYI */
+        max-height: 0; 
         transition: max-height 0.4s ease-in-out;
         z-index: 5;
     }
 
-    /* TAMPILKAN menu saat kelas 'show' ditambahkan */
     nav.show {
         max-height: 300px; 
         box-shadow: 0 5px 15px rgba(0,0,0,0.2);
