@@ -1,53 +1,196 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Media Pembelajaran Interaktif</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <header>
-        <div class="logo">📚 RuangKelas Digital</div>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
 
-        <div class="menu-toggle" role="button" aria-controls="nav-menu" aria-expanded="false" onclick="toggleMenu()">☰</div>
+body {
+  background: #f4f7fc;
+  color: #333;
+}
 
-        <nav id="nav-menu">
-            <ul>
-                <li><a href="#">Beranda</a></li>
-                <li><a href="#">Materi</a></li>
-                <li><a href="#">Diskusi</a></li>
-                <li><a href="#">Kontak</a></li>
-            </ul>
-        </nav>
-    </header>
+/* --- HEADER & NAVBAR (DESKTOP) --- */
+header {
+  display: flex;
+  justify-content: space-between; /* Untuk memisahkan logo dan menu */
+  align-items: center;
+  padding: 15px 50px;
+  background: #0056d2;
+  color: white;
+  position: relative;
+}
 
-    <section class="hero">
-        <div class="hero-text">
-            <h1>Selamat Datang di RuangKelas Digital</h1>
-            <p>Belajar lebih interaktif, menyenangkan, dan fleksibel kapan saja.</p>
-            <button onclick="mulaiBelajar()">Mulai Belajar</button>
-        </div>
-        <div class="hero-image">
-            <img src="https://via.placeholder.com/400x300?text=Kelas+Digital" alt="Kelas Digital"> 
-        </div>
-    </section>
+header .logo {
+  font-size: 20px;
+  font-weight: bold;
+}
 
-    <section class="menu-belajar">
-        <h2>Pilih Aktivitas Belajar</h2>
-        <div class="menu-grid">
-            <div class="card" onclick="alert('Buka Materi')">📖 Materi</div>
-            <div class="card" onclick="alert('Buka Tugas')">📝 Tugas</div>
-            <div class="card" onclick="alert('Buka Diskusi')">💬 Diskusi</div>
-            <div class="card" onclick="alert('Buka Nilai')">📊 Nilai</div>
-            <div class="card" onclick="alert('Buka Perpustakaan')">🏛️ Perpustakaan</div>
-        </div>
-    </section>
+/* Navigasi Desktop */
+nav ul {
+  list-style: none;
+  display: flex; 
+  gap: 20px;
+}
 
-    <footer>
-        <p>© 2025 RuangKelas Digital | Belajar Tanpa Batas</p>
-    </footer>
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
 
-    <script src="script.js"></script>
-</body>
-</html>
+/* Tombol hamburger (TERSEMBUNYI di desktop) */
+.menu-toggle {
+  display: none; 
+}
+
+/* --- HERO SECTION --- */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 50px;
+  flex-wrap: wrap;
+}
+
+.hero-text {
+  max-width: 50%;
+}
+
+.hero-text h1 {
+  font-size: 36px;
+  margin-bottom: 15px;
+}
+
+.hero-text button {
+  padding: 10px 20px;
+  background: #0056d2;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.hero-image img {
+  max-width: 400px;
+  border-radius: 12px;
+}
+
+/* --- MENU BELAJAR --- */
+.menu-belajar {
+  padding: 50px;
+  text-align: center;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  cursor: pointer;
+  font-size: 18px;
+  transition: 0.3s;
+}
+
+.card:hover {
+  background: #0056d2;
+  color: white;
+  transform: translateY(-5px);
+}
+
+/* --- FOOTER --- */
+footer {
+  background: #0056d2;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  margin-top: 50px;
+}
+
+/* ---------------------------------------------------------------- */
+/* --- RESPONSIVE MOBILE (Max-Width 768px) --- */
+/* ---------------------------------------------------------------- */
+@media (max-width: 768px) {
+    /* 1. Navbar dan Hamburger */
+    header {
+        padding: 15px 20px;
+    }
+
+    /* Tampilkan tombol hamburger di POJOK KANAN */
+    .menu-toggle {
+        display: block; 
+        font-size: 28px;
+        z-index: 10; 
+    }
+    
+    /* Navigasi: Sembunyikan dan persiapkan SLIDE KE BAWAH */
+    nav {
+        /* Hapus tampilan flex horizontal dari desktop */
+        position: absolute;
+        top: 60px; /* Di bawah header */
+        right: 0;
+        left: 0;
+        width: 100%;
+        background: #0056d2;
+        overflow: hidden;
+        
+        max-height: 0; /* Menu TERSEMBUNYI */
+        transition: max-height 0.4s ease-in-out;
+        z-index: 5;
+    }
+
+    /* TAMPILKAN menu saat kelas 'show' ditambahkan */
+    nav.show {
+        max-height: 300px; /* Menu SLIDE KE BAWAH */
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    nav ul {
+        flex-direction: column; 
+        align-items: center; 
+        padding: 15px 0;
+        gap: 0;
+    }
+
+    nav ul li {
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    nav ul li:last-child {
+        border-bottom: none;
+    }
+
+
+    /* 2. Tata Letak Konten Lainnya */
+    .hero {
+        flex-direction: column; 
+        text-align: center;
+        padding: 30px 20px;
+    }
+
+    .hero-text {
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .hero-image img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .menu-belajar {
+        padding: 30px 20px;
+    }
+
+    .menu-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
