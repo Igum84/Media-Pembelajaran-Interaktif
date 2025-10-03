@@ -5,10 +5,22 @@
   font-family: "Segoe UI", sans-serif;
 }
 
-body {
-  background: #f4f7fc;
-  color: #333;
+/* --- PENGATURAN STICKY FOOTER --- */
+html {
+    height: 100%;
 }
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Memastikan body setidaknya setinggi viewport */
+    background: #f4f7fc;
+    color: #333;
+}
+main {
+    flex-grow: 1; /* Konten utama akan mengambil semua ruang sisa */
+}
+/* ---------------------------------- */
+
 
 /* --- HEADER & NAVBAR (DESKTOP) --- */
 header {
@@ -104,13 +116,12 @@ nav ul li a {
   transform: translateY(-5px);
 }
 
-/* --- FOOTER STYLES (Diperbarui) --- */
+/* --- FOOTER STYLES --- */
 footer {
   background: #0056d2;
   color: white;
   text-align: center;
-  padding: 25px 15px; /* Tambah padding vertikal */
-  margin-top: 50px;
+  padding: 25px 15px;
 }
 
 .footer-content p {
@@ -137,23 +148,23 @@ footer {
 
 /* Efek Hover (Warna Asli Logo) */
 .social-icons a .fa-youtube:hover {
-    color: #FF0000; /* YouTube Red */
+    color: #FF0000; 
 }
 
 .social-icons a .fa-facebook-f:hover {
-    color: #3b5998; /* Facebook Blue */
+    color: #3b5998;
 }
 
 .social-icons a .fa-instagram:hover {
-    color: #E1306C; /* Instagram Pink/Purple */
+    color: #E1306C;
 }
 
 .social-icons a .fa-whatsapp:hover {
-    color: #25D366; /* WhatsApp Green */
+    color: #25D366;
 }
 
 .social-icons a .fa-envelope:hover {
-    color: #BB001B; /* Email Red */
+    color: #BB001B;
 }
 
 /* ---------------------------------------------------------------- */
@@ -175,7 +186,7 @@ footer {
     /* Navigasi: Sembunyikan dan persiapkan SLIDE KE BAWAH */
     nav {
         position: absolute;
-        top: 60px; /* Di bawah header */
+        top: 60px; 
         right: 0;
         left: 0;
         width: 100%;
@@ -189,7 +200,7 @@ footer {
 
     /* TAMPILKAN menu saat kelas 'show' ditambahkan */
     nav.show {
-        max-height: 300px; /* Menu SLIDE KE BAWAH */
+        max-height: 300px; 
         box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     }
 
@@ -246,6 +257,6 @@ footer {
 /* Responsif untuk layar sangat kecil */
 @media (max-width: 480px) {
     .menu-grid {
-        grid-template-columns: 1fr; /* Satu kolom di layar yang sangat sempit */
+        grid-template-columns: 1fr;
     }
 }
